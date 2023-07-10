@@ -73,7 +73,18 @@
   <script src="https://unpkg.com/jquery"></script>
   <script>
     $("article img").attr("class", "image-center");
+
     $( "article :last-child" ).remove();
+
+    $('#title').css("font-size", Math.floor(Math.random() * 100) + 1);
+
+    $newLI = $('<li>').text("Please God work.");
+    $('ol').append($newLI);
+
+    $('aside')
+      .empty()
+      .append('<p>')
+      .text("Sorry, that list sucked.");
   </script>
 </body>
 
