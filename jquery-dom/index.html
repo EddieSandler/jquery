@@ -72,13 +72,15 @@
   </div>
   <script src="https://unpkg.com/jquery"></script>
   <script>
-    $("article img").attr("class", "image-center");
+    "use strict";
 
-    $( "article :last-child" ).remove();
+    $("article img").attr("class", "image-center"); //can use the @ class
+
+    $("article :last-child").remove();
 
     $('#title').css("font-size", Math.floor(Math.random() * 100) + 1);
 
-    $newLI = $('<li>').text("Please God work.");
+    let $newLI = $('<li>').text("Please God work.");
     $('ol').append($newLI);
 
     $('aside')
@@ -87,12 +89,32 @@
       .text("Sorry, that list sucked.");
 
 
-      function setColor(evt) {
-        let red = $(".mb-5 ")
-        console.log('red',red)
+    function setColor(evt) {
 
-      }
-      $(".form-control").on("keyup change",setColor);
+      let red = $(".form-control").eq(0).val(); // use .eq method!!!!!!!
+
+      //let red = $(".form-control")[0].value;
+
+      let green = $(".form-control")[1].value;
+
+      let blue = $(".form-control")[2].value;
+
+      let rgb = `rgb(${red},${green},${blue})`;
+
+      $("body").css("background-color", `rgb(${red},${green},${blue})`);
+
+    }
+    $(".form-control").on("keyup change", setColor);
+    //$("img").on("click", () => $("img").remove());
+
+    function deleteImage(evt) {
+
+      $(evt.target).remove()
+
+
+
+    }
+    $("img").on("click", deleteImage);
 
 // select all input elements in the form- control class
 //create event listener on the elements
